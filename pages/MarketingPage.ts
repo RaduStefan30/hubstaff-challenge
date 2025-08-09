@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import type { Locator, Page } from '@playwright/test';
 
 export class MarketingPage {
     readonly page: Page;
@@ -7,7 +7,15 @@ export class MarketingPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.freeTrialButton = page.getByRole('link', { name: 'Free 14-day trial' })
+        this.freeTrialButton = page.getByRole('link', { name: 'Free 14-day trial' });
         this.signInButton = page.getByTestId('sign_in_button');
+    }
+
+    async openFreeTrial() {
+        await this.freeTrialButton.click();
+    }
+
+    async openSignIn() {
+        await this.signInButton.click();
     }
 }

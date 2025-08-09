@@ -34,3 +34,10 @@ export class MaildropHelper {
         return (await res.json()).data.message as { html: string; data: string };
     }
 }
+
+export function createAlias(base: string) {
+    const [local, domain] = base.split('@');
+    const cleanLocal = local.replace(/\+.*/, ''); // strip existing +tag if any
+    const tag = `qa${Date.now()}${Math.random().toString(36).slice(2, 6)}`;
+    return { email: `${cleanLocal}+${tag}@${domain}`, tag };
+}
