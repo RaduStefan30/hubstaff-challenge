@@ -15,6 +15,7 @@ test('Add/create project', async ({ page }) => {
 
   await marketingPage.signInButton.click();
   await authPage.login(AUTH_DATA.EMAIL_ADDRESS, AUTH_DATA.PASSWORD);
+  await expect(dashboardPage.dashboardWelcomeHeader).toBeVisible();
   const orgID = page.url().split('/').pop();
   await page.goto(`https://app.hubstaff.com/organizations/${orgID}/projects`);
 
@@ -50,6 +51,7 @@ test('Bonus payment', async ({ page }) => {
 
   await marketingPage.signInButton.click();
   await authPage.login(AUTH_DATA.EMAIL_ADDRESS, AUTH_DATA.PASSWORD);
+  await expect(dashboardPage.dashboardWelcomeHeader).toBeVisible();
   const orgID = page.url().split('/').pop();
   await page.goto(`https://app.hubstaff.com/organizations/${orgID}/team_payments/bonus`);
 

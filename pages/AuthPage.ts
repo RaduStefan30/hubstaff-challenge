@@ -55,7 +55,7 @@ export class AuthPage {
     }
 
     async acceptCookies() {
-        await this.acceptCookiesButton.click({ timeout: 10_000 });
+        await this.acceptCookiesButton.click({ timeout: 30_000 });
     }
 
     async submitSignup() {
