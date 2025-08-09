@@ -12,7 +12,6 @@ test.beforeEach(async ({ page }) => {
 test('Signup for the 14 day free trial', async ({ page }) => {
   const authPage = new AuthPage(page);
   const marketingPage = new MarketingPage(page);
-  const { email } = createAlias(AUTH_DATA.EMAIL_ADDRESS);
 
   // Step 1: Click "Free 14-day trial" button on the top nav header
   await marketingPage.openFreeTrial();
@@ -22,6 +21,7 @@ test('Signup for the 14 day free trial', async ({ page }) => {
 
   // Step 3: Fill "Work email"
   // This would have been replaced with the disposable email if the service worked
+  const { email } = createAlias(AUTH_DATA.EMAIL_ADDRESS + 'test');
   await authPage.fillEmail(email);
 
   // Step 4: Fill "Password"
