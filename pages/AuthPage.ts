@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { createCipheriv } from 'crypto';
 
 export class AuthPage {
     readonly page: Page;
@@ -55,7 +56,12 @@ export class AuthPage {
     }
 
     async acceptCookies() {
-        await this.acceptCookiesButton.click({ timeout: 30_000 });
+        try {
+            await this.acceptCookiesButton.click({ timeout: 10_000 });
+        }
+        catch {
+            console.log('The cookies banner has not been displayed')
+        }
     }
 
     async submitSignup() {
