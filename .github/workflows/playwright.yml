@@ -6,9 +6,10 @@ on:
     branches: [ main ]
 jobs:
   test:
+    environment: test  
     env:
-      EMAIL_ADDRESS: ${{ variables.EMAIL_ADDRESS }}
-      PASSWORD: ${{ variables.PASSWORD }}
+      EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+      PASSWORD: ${{ secrets.PASSWORD }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
